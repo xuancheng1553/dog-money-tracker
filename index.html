@@ -1,25 +1,3 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <title>我的文本</title>
-    <style>
-        body {
-            font-size: 16px;
-            line-height: 1.8;
-            padding: 30px;
-            background: #f5f5f5;
-        }
-        pre {
-            white-space: pre-wrap;
-            background: #fff;
-            padding: 20px;
-            border-radius: 8px;
-        }
-    </style>
-</head>
-<body>
-<pre>
 
 <!DOCTYPE html>
 <html lang="zh-CN">
@@ -46,6 +24,8 @@
             color: #c47826;
             margin: 10px 0;
             text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+            text-align: center;
+            font-size: 24px;
         }
         .slogan {
             font-size: 18px;
@@ -64,23 +44,26 @@
             align-items: flex-start;
             flex-wrap: wrap;
             justify-content: center;
+            width: 100%;
+            max-width: 1000px;
         }
         .progress-info {
             background: #fff;
             padding: 15px 25px;
             border-radius: 15px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             text-align: center;
             color: #8b5a2b;
             min-width: 300px;
+            width: 100%;
         }
         .progress-info p {
-            margin: 5px 0;
+            margin: 8px 0;
             font-size: 16px;
         }
         .progress-bar-container {
-            width: 300px;
+            width: 100%;
             height: 12px;
             background: #ffe8cc;
             border-radius: 10px;
@@ -94,6 +77,101 @@
             transition: width 0.5s ease;
             border-radius: 10px;
         }
+
+        /* 多梦想模块 */
+        .dreams-section {
+            width: 100%;
+            background: #fff;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .dreams-section h3 {
+            color: #c47826;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        .add-dream {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+        .add-dream input {
+            flex: 1;
+            padding: 10px;
+            border: 2px solid #ffe0b2;
+            border-radius: 8px;
+            outline: none;
+        }
+        .add-dream button {
+            padding: 10px 15px;
+            background: #ff9800;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        .dream-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .dream-item {
+            background: #fff9f0;
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid #ffe0b2;
+        }
+        .dream-title {
+            font-weight: bold;
+            color: #c47826;
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .dream-progress {
+            width: 100%;
+            height: 10px;
+            background: #ffe8cc;
+            border-radius: 5px;
+            overflow: hidden;
+            margin: 8px 0;
+        }
+        .dream-progress-bar {
+            height: 100%;
+            background: #4CAF50;
+            width: 0%;
+            transition: width 0.5s;
+        }
+        .dream-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            color: #666;
+            margin-top: 5px;
+        }
+        .dream-actions {
+            display: flex;
+            gap: 8px;
+            margin-top: 10px;
+        }
+        .dream-actions input {
+            flex: 1;
+            padding: 6px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+        .dream-actions button {
+            padding: 6px 10px;
+            background: #ff9800;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
         .ladder-container {
             position: relative;
             margin-top: 20px;
@@ -115,7 +193,7 @@
             justify-content: center;
             font-size: 18px;
             font-weight: bold;
-            color: #5d4037;
+            color: #5d3703;
             cursor: pointer;
             transition: all 0.3s ease;
             box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
@@ -170,6 +248,7 @@
             resize: none;
             outline: none;
             transition: border-color 0.3s;
+            margin-bottom: 10px;
         }
         .note-input:focus {
             border-color: #ff9800;
@@ -200,7 +279,7 @@
             border-radius: 8px;
             margin-bottom: 8px;
             font-size: 14px;
-            color: #5d4037;
+            color: #5d3703;
         }
         .note-date {
             font-size: 12px;
@@ -225,7 +304,7 @@
 </head>
 <body>
     <h1>🐶 财富阶梯成长打卡 🐾</h1>
-    <div class="slogan">跟着小狗钱钱，每天存下33，富足生活看得见</div>
+    <div class="slogan">跟着小狗钱钱，每天存一点，富足生活看得见</div>
 
     <div class="progress-info">
         <p>当前进度：<span id="current-stage">未开始</span></p>
@@ -237,16 +316,27 @@
         <p>🔥 连续打卡：<span id="streak-days">0</span> 天</p>
     </div>
 
+    <!-- 多梦想储蓄罐 -->
+    <div class="dreams-section">
+        <h3>🎯 我的梦想储蓄罐（可自定义多个）</h3>
+        <div class="add-dream">
+            <input type="text" id="dream-name" placeholder="梦想名称（如：买车、旅行、教育）">
+            <input type="number" id="dream-target" placeholder="目标金额">
+            <button onclick="addDream()">添加梦想</button>
+        </div>
+        <div class="dream-list" id="dream-list"></div>
+    </div>
+
     <div class="container">
         <div class="ladder-container">
             <div class="ladder">
                 <div class="step step1" data-stage="1">读透小狗钱钱</div>
                 <div class="step step2" data-stage="2">制定愿望清单</div>
                 <div class="step step3" data-stage="3">梦想储蓄罐</div>
-                <div class="step step4" data-stage="4">挣钱:帮助他人</div>
+                <div class="step step4" data-stage="4">挣钱：帮助他人</div>
                 <div class="step step5" data-stage="5">强制储蓄</div>
-                <div class="step step6" data-stage="6">投资:钱生钱</div>
-                <div class="step step7" data-stage="7">愿望达成:富足人生</div>
+                <div class="step step6" data-stage="6">投资：钱生钱</div>
+                <div class="step step7" data-stage="7">愿望达成：富足人生</div>
                 <div class="dog" id="dog">
                     <svg viewBox="0 0 100 100" width="120">
                         <ellipse cx="50" cy="70" rx="30" ry="25" fill="#ffcc44"/>
@@ -266,7 +356,7 @@
 
         <div class="note-section">
             <h3>📝 每日成长记录</h3>
-            <textarea class="note-input" id="note-input" placeholder="写下今天的收获、感悟或计划"></textarea>
+            <textarea class="note-input" id="note-input" placeholder="写下今天的收获、感悟或计划吧~"></textarea>
             <button class="save-btn" onclick="saveNote()">✅ 今日打卡</button>
             <div class="note-history" id="note-history">
                 <h4 style="color: #8b5a2b; margin-bottom: 10px;">历史记录</h4>
@@ -296,6 +386,7 @@
         const streakDaysEl = document.getElementById('streak-days');
         const noteInput = document.getElementById('note-input');
         const noteHistory = document.getElementById('note-history');
+        const dreamListEl = document.getElementById('dream-list');
 
         const today = new Date();
         const todayStr = today.toLocaleDateString('zh-CN');
@@ -308,14 +399,18 @@
                    String(date.getDate()).padStart(2,'0');
         }
 
+        // 基础数据
         let currentStage = Number(localStorage.getItem('financeStage')) || 0;
         let notes = JSON.parse(localStorage.getItem('financeNotes')) || [];
         let checkinDates = JSON.parse(localStorage.getItem('checkinDates')) || [];
+        let dreams = JSON.parse(localStorage.getItem('dreams')) || [];
         let totalDays = checkinDates.length;
         let streakDays = calcStreak(checkinDates);
 
         updateUI();
+        renderDreams();
 
+        // 阶段点击
         stepElements.forEach(step => {
             step.addEventListener('click', () => {
                 currentStage = parseInt(step.dataset.stage);
@@ -324,20 +419,19 @@
             });
         });
 
+        // 打卡
         function saveNote() {
             const content = noteInput.value.trim();
             if (!content) {
-                alert('请写点什么再打卡~');
+                alert('请写点什么再打卡哦~');
                 return;
             }
-
             if (!checkinDates.includes(todayYmd)) {
                 checkinDates.push(todayYmd);
                 localStorage.setItem('checkinDates', JSON.stringify(checkinDates));
                 totalDays = checkinDates.length;
                 streakDays = calcStreak(checkinDates);
             }
-
             const note = {
                 date: todayStr,
                 ymd: todayYmd,
@@ -348,9 +442,10 @@
             localStorage.setItem('financeNotes', JSON.stringify(notes));
             noteInput.value = '';
             updateUI();
-            alert('✅ 今日打卡成功！');
+            alert('✅ 打卡成功！');
         }
 
+        // 连续打卡
         function calcStreak(dates) {
             if (dates.length === 0) return 0;
             const set = new Set(dates);
@@ -368,12 +463,12 @@
             return streak;
         }
 
+        // 更新界面
         function updateUI() {
             stepElements.forEach(s => {
                 const n = parseInt(s.dataset.stage);
                 n <= currentStage ? s.classList.add('completed') : s.classList.remove('completed');
             });
-
             const pos = [
                 {top:380,left:20},{top:320,left:50},{top:260,left:80},
                 {top:200,left:110},{top:140,left:140},{top:80,left:170},{top:20,left:200}
@@ -387,7 +482,6 @@
                 dog.style.bottom = '10px';
                 dog.style.left = '20px';
             }
-
             currentStageEl.textContent = currentStage ? stages[currentStage-1] : '未开始';
             progressBar.style.width = currentStage ? (currentStage/stages.length*100)+'%' : '0%';
             totalDaysEl.textContent = totalDays;
@@ -412,33 +506,90 @@
             });
         }
 
+        // ======================
+        // 多梦想功能
+        // ======================
+        function addDream() {
+            const name = document.getElementById('dream-name').value.trim();
+            const target = Number(document.getElementById('dream-target').value);
+            if (!name || !target || target <= 0) {
+                alert('请输入完整的梦想名称和目标金额');
+                return;
+            }
+            dreams.push({
+                id: Date.now(),
+                name: name,
+                target: target,
+                saved: 0
+            });
+            localStorage.setItem('dreams', JSON.stringify(dreams));
+            document.getElementById('dream-name').value = '';
+            document.getElementById('dream-target').value = '';
+            renderDreams();
+            alert('梦想添加成功！');
+        }
+
+        function renderDreams() {
+            dreamListEl.innerHTML = '';
+            dreams.forEach((dream, index) => {
+                const percent = dream.target > 0 ? Math.min(Math.round((dream.saved / dream.target) * 100), 100) : 0;
+                const left = Math.max(dream.target - dream.saved, 0);
+                const item = document.createElement('div');
+                item.className = 'dream-item';
+                item.innerHTML = `
+                    <div class="dream-title">
+                        ${dream.name}
+                        <span style="color:#999;font-size:14px;">ID:${dream.id}</span>
+                    </div>
+                    <div class="dream-progress">
+                        <div class="dream-progress-bar" style="width:${percent}%"></div>
+                    </div>
+                    <div class="dream-row">
+                        <span>目标：¥${dream.target}</span>
+                        <span>已存：¥${dream.saved}</span>
+                        <span>进度：${percent}%</span>
+                    </div>
+                    <div class="dream-row">
+                        <span>剩余：¥${left}</span>
+                    </div>
+                    <div class="dream-actions">
+                        <input type="number" placeholder="存入金额" id="save-${dream.id}">
+                        <button onclick="saveToDream(${index})">存入</button>
+                        <button onclick="deleteDream(${index})" style="background:#f44336">删除</button>
+                    </div>
+                `;
+                dreamListEl.appendChild(item);
+            });
+        }
+
+        function saveToDream(index) {
+            const dream = dreams[index];
+            const input = document.getElementById(`save-${dream.id}`);
+            const money = Number(input.value);
+            if (!money || money <= 0) {
+                alert('请输入有效金额');
+                return;
+            }
+            dream.saved += money;
+            localStorage.setItem('dreams', JSON.stringify(dreams));
+            input.value = '';
+            renderDreams();
+            alert('存入成功！');
+        }
+
+        function deleteDream(index) {
+            if (!confirm('确定删除这个梦想吗？')) return;
+            dreams.splice(index, 1);
+            localStorage.setItem('dreams', JSON.stringify(dreams));
+            renderDreams();
+        }
+
+        // 重置
         function resetAll() {
-            if (!confirm('确定要清空所有进度、记录、打卡天数吗？')) return;
+            if (!confirm('确定清空所有数据？不可恢复！')) return;
             localStorage.clear();
-            currentStage = 0;
-            notes = [];
-            checkinDates = [];
-            totalDays = 0;
-            streakDays = 0;
-            updateUI();
+            location.reload();
         }
     </script>
 </body>
 </html>
-</pre>
-</body>
-</html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
